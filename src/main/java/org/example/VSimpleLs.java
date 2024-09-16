@@ -6,6 +6,9 @@ import java.util.Scanner;
 
 public class VSimpleLs {
     public static void main(String[] args) {
+
+        System.out.println("Dime la ruta");
+
         Scanner sc = new Scanner(System.in);
         String nombre = sc.nextLine();
         Path path = Path.of(nombre);
