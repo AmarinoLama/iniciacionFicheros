@@ -19,11 +19,8 @@ public class Corrector {
                 FileReader(path.toFile()));) {
             String linea;
             while ((linea=lector.readLine()) != null) {
-                if (solTot.length() != 0) {
-                    notas += linea;
-                    System.out.printf(linea);
-                    break;
-                    /*notas += calcularNota(linea.substring(8,28), solTot);*/
+                if (solTot.length() != 0 && linea.length() != 0) {
+                    notas += linea + " Has sacado un : " + calcularNota(linea.substring(9,29), solTot) + "\n";
                 } else {
                     solTot += linea;
                 }
@@ -32,17 +29,28 @@ public class Corrector {
             System.err.println(e.getMessage());
         }
 
-        System.out.printf("NOTAS : " + notas.toString() + "\n \n" + solTot);
+        System.out.printf(solTot + "\n \n" + notas);
     }
 
     public static String calcularNota(String respuestas, String solTot) {
 
         Double nota = 0.0;
-        for (Character respuesta : respuestas.toCharArray()) {
-            for (Character solucion : solTot.toCharArray()) {
-                nota += respuesta.equals(" ") ? 0.0 : (respuesta.equals(solucion) ? 0.5 : -0.15);
+        for (int i = 0; i<20; i++) {
+            String respuesta = respuestas.substring(i,i+1);
+            String solucion = solTot.substring(i,i+1);
+            if (respuesta.equals(solucion)) {
+                nota += 0.5;
+            } else if (respuestas.substring(i)=="") {
+                nota += 0;
+            } else {
+                nota -= 0.15;
             }
         }
         return nota.toString();
     }
 }
+/*
+10
+        4.15
+        8.85
+        2.35*/
