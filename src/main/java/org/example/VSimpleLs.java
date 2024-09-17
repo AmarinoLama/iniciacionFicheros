@@ -1,6 +1,5 @@
 package org.example;
 
-import java.io.IOException;
 import java.nio.file.*;
 import java.util.Scanner;
 
@@ -13,7 +12,7 @@ public class VSimpleLs {
         String nombre = sc.nextLine();
         Path path = Path.of(nombre);
 
-        StringBuilder salida = new StringBuilder("");
+        StringBuilder salida = new StringBuilder();
         salida.append(Files.isDirectory(path) ? "d" : "-")
                 .append(Files.isReadable(path) ? "r" : "-")
                 .append(Files.isWritable(path) ? "w" : "-")

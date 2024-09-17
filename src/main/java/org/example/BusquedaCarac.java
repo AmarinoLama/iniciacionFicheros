@@ -5,7 +5,6 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Optional;
 import java.util.Scanner;
 
@@ -18,7 +17,6 @@ public class BusquedaCarac {
         String nombre = sc.nextLine();
 
         System.out.println("Dime la letra que quieres buscar:");
-        Scanner scLetra = new Scanner(System.in);
         String input = sc.nextLine();
         char letra = input.charAt(0);
 
