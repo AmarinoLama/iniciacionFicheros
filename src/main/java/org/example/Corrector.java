@@ -40,7 +40,7 @@ public class Corrector {
             String solucion = solTot.substring(i,i+1);
             if (respuesta.equals(solucion)) {
                 nota += 0.5;
-            } else if (respuestas.substring(i)=="") {
+            } else if (respuestas.substring(i, i+1).equals(" ")) {
                 nota += 0;
             } else {
                 nota -= 0.15;
@@ -49,8 +49,3 @@ public class Corrector {
         return nota.toString();
     }
 }
-/*
-10
-        4.15
-        8.85
-        2.35*/
