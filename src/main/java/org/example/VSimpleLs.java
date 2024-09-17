@@ -6,7 +6,7 @@ import java.util.Scanner;
 public class VSimpleLs {
     public static void main(String[] args) {
 
-        System.out.println("Dime la ruta");
+        System.out.println("Dime la ruta"); // "ref/texto.txt"
 
         Scanner sc = new Scanner(System.in);
         String nombre = sc.nextLine();

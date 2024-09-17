@@ -12,7 +12,7 @@ public class BusquedaCarac {
 
     public static void main(String[] args) {
 
-        System.out.println("Dime la ruta del archivo:");
+        System.out.println("Dime la ruta del archivo:"); // "ref/buscarLetras.txt"
         Scanner sc = new Scanner(System.in);
         String nombre = sc.nextLine();
 
