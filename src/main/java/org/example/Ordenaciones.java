@@ -1,8 +1,6 @@
 package org.example;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Comparator;
@@ -49,5 +47,18 @@ public class Ordenaciones {
         }
 
         System.out.println(palabras.toString());
+
+        String ruta = "home/luis/Documentos/archivo.txt";
+        File file = new File(ruta);
+        if(!file.exists()) {
+            file.createNewFile();
+        }
+
+        try (PrintWriter escritor = new PrintWriter("res/marcas.txt")) {
+
+            System.out.println("Escritura realizada.");
+        } catch (FileNotFoundException e) {
+            System.err.println(e.getMessage());
+        }
     }
 }

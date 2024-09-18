@@ -34,7 +34,7 @@ public class BusquedaCarac {
 
         System.out.println("El número de veces que aparece la letra es de : " + contarRepes(texto, letra).toString());
 
-        System.out.println("La letra más repetida es la : " + letraMasRepe(texto));
+        System.out.println("La letra más repetida es la : < " + letraMasRepe(texto) + " >");
     }
 
     public static Long contarRepes(String texto, char letra) {

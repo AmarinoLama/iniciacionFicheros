@@ -1,24 +1,28 @@
 package org.example;
 
+import java.io.File;
 import java.nio.file.*;
 import java.util.Scanner;
 
 public class VSimpleLs {
     public static void main(String[] args) {
 
-        System.out.println("Dime la ruta"); // "ref/texto.txt"
+        System.out.println("Dime la ruta"); // "ref/texto.txt" o "ref/"
 
         Scanner sc = new Scanner(System.in);
         String nombre = sc.nextLine();
-        Path path = Path.of(nombre);
+        File path = new File(nombre);
 
         StringBuilder salida = new StringBuilder();
-        salida.append(Files.isDirectory(path) ? "d" : "-")
-                .append(Files.isReadable(path) ? "r" : "-")
-                .append(Files.isWritable(path) ? "w" : "-")
-                .append((path.toFile().canRead() && path.toFile().canWrite() && path.toFile().canExecute()) ? "x" : "-")
-                .append(Files.isDirectory(path) ? " directorio" : " archivo");
 
+        for (File element: path.listFiles()) {
+            salida.append(element.isDirectory() ? "d" : "-")
+                    .append(element.canRead() ? "r" : "-")
+                    .append(element.canWrite() ? "w" : "-")
+                    .append(element.canExecute() ? "x" : "-")
+                    .append(element.isDirectory() ? " directorio" : " archivo")
+                    .append("\n");
+        }
         System.out.printf(salida.toString());
     }
 }
