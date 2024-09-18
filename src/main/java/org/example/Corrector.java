@@ -5,7 +5,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.*;
-import java.util.stream.Collectors;
+
 
 public class Corrector {
     public static void main(String[] args) {
@@ -41,6 +41,8 @@ public class Corrector {
         }
 
     }
+
+    // ARREGLAR cuyando sean espacios
 
     public static String calcularNota(String respuestas, String solTot) {
 

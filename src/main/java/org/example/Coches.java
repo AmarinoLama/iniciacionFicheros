@@ -54,10 +54,10 @@ public class Coches {
             String modelo = coche.split(" ",2)[1];
             
             if (modelos.get(marca) == null) {
-                modelos.put(marca, modelo); //poner de posicion [1,n]
+                modelos.put(marca, modelo);
             } else {
-                String newValue =  (modelos.get(coche.split(" ")[0])) + ", " + (coche.split(" ")[1]);
-                modelos.replace(coche.split(" ")[0], modelos.get(coche.split(" ")[0]), newValue);
+                String newValue =  (modelos.get(marca)) + ", " + (modelo);
+                modelos.replace(marca, modelos.get(marca), newValue);
             }
         }
 

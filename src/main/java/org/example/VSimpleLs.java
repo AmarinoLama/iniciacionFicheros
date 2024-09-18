@@ -1,7 +1,6 @@
 package org.example;
 
 import java.io.File;
-import java.nio.file.*;
 import java.util.Scanner;
 
 public class VSimpleLs {
