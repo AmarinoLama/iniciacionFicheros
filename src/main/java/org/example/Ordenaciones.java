@@ -7,7 +7,7 @@ import java.util.Comparator;
 import java.util.Scanner;
 
 public class Ordenaciones {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         System.out.println("Dime la ruta del archivo:"); // "ref/ordenar.txt"
         Scanner sc = new Scanner(System.in);
         Path path = Path.of(sc.nextLine());
@@ -17,8 +17,8 @@ public class Ordenaciones {
                 "\n * ascendente case-insensitive, aci " +
                 "\n * descendente case-sensitive, dcs " +
                 "\n * descendente case-insensitive, dci");
-        Scanner sc2 = new Scanner(System.in);
-        String orden = sc2.nextLine();
+
+        String orden = sc.nextLine();
 
         ArrayList<String> palabras = new ArrayList<>();
 
@@ -46,19 +46,17 @@ public class Ordenaciones {
                 break;
         }
 
-        System.out.println(palabras.toString());
+        String ruta = path.toString().split(".txt")[0] + "_" + orden + ".txt";
 
-        String ruta = "home/luis/Documentos/archivo.txt";
-        File file = new File(ruta);
-        if(!file.exists()) {
-            file.createNewFile();
-        }
-
-        try (PrintWriter escritor = new PrintWriter("res/marcas.txt")) {
-
-            System.out.println("Escritura realizada.");
-        } catch (FileNotFoundException e) {
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(ruta.toString()))) {
+            for (String line : palabras) {
+                writer.write(line);
+                writer.newLine();
+            }
+        } catch (IOException e) {
             System.err.println(e.getMessage());
         }
+
+        System.out.println("Archivo ordenado generado: " + ruta);
     }
 }

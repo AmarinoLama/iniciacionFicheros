@@ -4,7 +4,6 @@ import java.io.*;
 import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
 
 public class Coches {
@@ -28,25 +27,22 @@ public class Coches {
 
         HashMap<String, String> modelos = modelos(coches);
 
-        System.out.printf(modelos.toString());
+        String ruta = "ref/marcas.txt";
 
-        //crear fichero
+        try (BufferedWriter writer = new BufferedWriter(new FileWriter(ruta.toString()))) {
 
-        /*
-        String ruta = "home/luis/Documentos/archivo.txt";
-        File file = new File(ruta);
-        if(!file.exists()) {
-            file.createNewFile();
-        }
+            ArrayList<String> marcas = new ArrayList<>(modelos.keySet());
+            marcas.sort(String::compareTo);
 
-        try (PrintWriter escritor = new PrintWriter("res/marcas.txt")) {
-            for (Map.Entry<String, String> modelo : modelos.entrySet()) {
-                escritor.println(modelo.getKey() + ": " + modelo.getValue());
+            for (String marca : marcas) {
+                writer.write(marca + " : " + modelos.get(marca) + "\n");
             }
-            System.out.println("Escritura realizada.");
-        } catch (FileNotFoundException e) {
+
+
+        } catch (IOException e) {
             System.err.println(e.getMessage());
-        }*/
+        }
+        System.out.println("Archivo ordenado generado: " + ruta);
     }
 
     public static HashMap<String, String> modelos (ArrayList<String> coches) {
