@@ -14,7 +14,7 @@ public class VSimpleLs {
 
         StringBuilder salida = new StringBuilder();
 
-        for (File element: path.listFiles()) {
+        for (File element : path.listFiles()) {
             salida.append(element.isDirectory() ? "d" : "-")
                     .append(element.canRead() ? "r" : "-")
                     .append(element.canWrite() ? "w" : "-")

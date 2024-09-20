@@ -25,8 +25,8 @@ public class BusquedaCarac {
 
         try (BufferedReader lector = new BufferedReader(new
                 FileReader(path.toFile()));) {
-                String linea;
-            while ((linea=lector.readLine()) != null)
+            String linea;
+            while ((linea = lector.readLine()) != null)
                 texto += linea;
         } catch (IOException e) {
             System.err.println(e.getMessage());

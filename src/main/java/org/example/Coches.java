@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 public class Coches {
 
-    public static void main (String[] args) {
+    public static void main(String[] args) {
 
         System.out.println("Dime la ruta del archivo:"); // "ref/coches.txt"
         Scanner sc = new Scanner(System.in);
@@ -19,8 +19,9 @@ public class Coches {
         try (BufferedReader lector = new BufferedReader(new
                 FileReader(path.toFile()));) {
             String linea;
-            while ((linea=lector.readLine()) != null && lector.readLine() != " ") {
-                coches.add(linea); }
+            while ((linea = lector.readLine()) != null && lector.readLine() != " ") {
+                coches.add(linea);
+            }
         } catch (IOException e) {
             System.err.println(e.getMessage());
         }
@@ -45,18 +46,18 @@ public class Coches {
         System.out.println("Archivo ordenado generado: " + ruta);
     }
 
-    public static HashMap<String, String> modelos (ArrayList<String> coches) {
+    public static HashMap<String, String> modelos(ArrayList<String> coches) {
 
         HashMap<String, String> modelos = new HashMap<>();
 
         for (String coche : coches) {
-            String marca = coche.split(" ",2)[0];
-            String modelo = coche.split(" ",2)[1];
-            
+            String marca = coche.split(" ", 2)[0];
+            String modelo = coche.split(" ", 2)[1];
+
             if (modelos.get(marca) == null) {
                 modelos.put(marca, modelo);
             } else {
-                String newValue =  (modelos.get(marca)) + ", " + (modelo);
+                String newValue = (modelos.get(marca)) + ", " + (modelo);
                 modelos.replace(marca, modelos.get(marca), newValue);
             }
         }

@@ -25,7 +25,7 @@ public class Ordenaciones {
         try (BufferedReader lector = new BufferedReader(new
                 FileReader(path.toFile()));) {
             String linea;
-            while ((linea=lector.readLine()) != null)
+            while ((linea = lector.readLine()) != null)
                 palabras.add(linea);
         } catch (IOException e) {
             System.err.println(e.getMessage());

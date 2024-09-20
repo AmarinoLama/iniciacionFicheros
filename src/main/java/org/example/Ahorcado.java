@@ -1,6 +1,6 @@
 package org.example;
 
-import java.io.IOException;
+// Tarea sin acabar
 
 public class Ahorcado {
     public static void main(String[] args) throws InterruptedException {
