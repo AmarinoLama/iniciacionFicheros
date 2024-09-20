@@ -5,6 +5,9 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Scanner;
 
+// HACER el ejercicio por bloques, es decir, va printeando carpetas a medida que las encuentre (mirar foto). Es el nombre de la carpeta seguida del contenido
+// usar la lista de rutas
+
 public class lsRVariante {
 
     public static void main(String[] args) {
