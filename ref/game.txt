@@ -1,0 +1,3 @@
+state=_________
+errors=0
+secretWord=marioneta
