@@ -3,53 +3,53 @@ package org.example;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.util.ArrayDeque;
+import java.util.ArrayList;
+import java.util.Deque;
 import java.util.Scanner;
-
-// HACER el ejercicio por bloques, es decir, va printeando carpetas a medida que las encuentre (mirar foto). Es el nombre de la carpeta seguida del contenido
-// usar la lista de rutas
 
 public class lsRVariante {
 
     public static void main(String[] args) {
 
         System.out.println("Dime la ruta \n"); // "ref/texto.txt" o "ref/"
-
         Scanner sc = new Scanner(System.in);
-        printDirectory(sc.nextLine());
+        String ruta = sc.nextLine();
 
+        Deque<Path> stack = new ArrayDeque<Path>();
+        stack.add(Path.of(ruta));
+        stack.addAll(foldersLocator(ruta));
+
+        for (Path path : stack) {
+            System.out.println(path.toString() + "\\.");
+            printDirectory(path);
+            System.out.println("\n");
+        }
     }
 
-    public static void printDirectory(String ruta) {
+    public static ArrayList<Path> foldersLocator(String ruta) {
+
+        ArrayList<Path> paths = new ArrayList<Path>();
 
         try {
             for (Path element1 : Files.newDirectoryStream(Path.of(ruta))) {
-                StringBuilder salida = new StringBuilder();
                 File element = element1.toFile();
-                salida.append(element.isDirectory() ? "d" : "-")
-                        .append(element.canRead() ? "r" : "-")
-                        .append(element.canWrite() ? "w" : "-")
-                        .append(element.canExecute() ? "x" : "-")
-                        .append(" ")
-                        .append(element.getName());
-                System.out.println(salida);
                 if (element.isDirectory()) {
-                    printDirectory(ruta + "\\" + element.getName(), 1);
+                    paths.add(Path.of(ruta + "\\" + element.getName()));
+                    paths.addAll(foldersLocator(ruta + "\\" + element.getName()));
                 }
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
+        return paths;
     }
 
-    public static void printDirectory(String ruta, int tab) {
-
+    public static void printDirectory(Path path) {
         try {
-            for (Path element1 : Files.newDirectoryStream(Path.of(ruta))) {
+            for (Path element1 : Files.newDirectoryStream(path)) {
                 StringBuilder salida = new StringBuilder();
                 File element = element1.toFile();
-                for (int i = 0; i < tab; i++) {
-                    salida.append("\t");
-                }
                 salida.append(element.isDirectory() ? "d" : "-")
                         .append(element.canRead() ? "r" : "-")
                         .append(element.canWrite() ? "w" : "-")
@@ -57,9 +57,6 @@ public class lsRVariante {
                         .append(" ")
                         .append(element.getName());
                 System.out.println(salida);
-                if (element.isDirectory()) {
-                    printDirectory(ruta + "\\" + element.getName(), tab + 1);
-                }
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());

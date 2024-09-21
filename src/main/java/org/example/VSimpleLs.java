@@ -18,8 +18,8 @@ public class VSimpleLs {
             salida.append(element.isDirectory() ? "d" : "-")
                     .append(element.canRead() ? "r" : "-")
                     .append(element.canWrite() ? "w" : "-")
-                    .append(element.canExecute() ? "x" : "-")
-                    .append(element.isDirectory() ? " directorio" : " archivo")
+                    .append(element.canExecute() ? "x " : "- ")
+                    .append(element.getName())
                     .append("\n");
         }
         System.out.printf(salida.toString());
