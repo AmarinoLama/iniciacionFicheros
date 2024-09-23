@@ -21,5 +21,7 @@ public class EscritorPersonas {
         } catch (IOException ex) {
             System.err.println(ex);
         }
+
+        System.out.println("Personas guardados correctamente");
     }
 }
