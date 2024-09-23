@@ -5,10 +5,10 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Path;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
-import java.util.Map;
 import java.util.Scanner;
-
+import java.util.stream.Collectors;
 
 public class Corrector {
     public static void main(String[] args) {
@@ -37,15 +37,9 @@ public class Corrector {
         }
 
         System.out.printf(solTot + "\n \n" + calificaciones +
-                "\n \nTabla puntuaciones : \n");
-
-        for (Map.Entry<String, Double> tabla : tablaPorcentajes(notas).entrySet()) {
-            System.out.println("\t" + tabla.getKey() + " -> " + tabla.getValue() + "%");
-        }
+                "\n \n Tabla puntuaciones : \n" + tablaPorcentajes(notas).toString());
 
     }
-
-    // ARREGLAR cuyando sean espacios
 
     public static String calcularNota(String respuestas, String solTot) {
 
@@ -86,9 +80,10 @@ public class Corrector {
         for (String calificacion : calificaciones) {
             if (!tabla.containsKey(calificacion)) {
                 long repeticiones = calificaciones.stream().filter(x -> x.equals(calificacion)).count();
-                tabla.put(calificacion, (((double) repeticiones / calificaciones.size()) * 100));
+                tabla.put(calificacion, ((double) repeticiones / calificaciones.size()) * 100);
             }
         }
+
         return tabla;
     }
 }
